@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Bridge</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      overflow: hidden; /* Prevent scrolling for the entire body */
+    }
+    /* Video background */
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the video covers the entire background */
+      z-index: -1; /* Place the video behind other content */
+    }
+    header {
+      background: rgba(0, 120, 215, 0.8); /* Semi-transparent blue overlay */
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative; /* Ensure header is above the video */
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 91, 181, 0.8); /* Semi-transparent darker blue for navigation */
+      padding: 10px;
+      position: relative; /* Ensure navigation is above the video */
+    }
+    nav button {
+      background-color: #0078d7; /* Blue button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+    nav button:hover {
+      background-color: #004a8f; /* Darker blue on hover */
+    }
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ensure sections are above the video */
+    }
+    h2 {
+      color: #0078d7; /* Blue heading */
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      background-color: #0078d7; /* Blue button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    form button:hover {
+      background-color: #004a8f; /* Darker blue on hover */
+    }
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .activity-card {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      transition: transform 0.2s;
+      cursor: pointer; /* Indicate that the card is clickable */
+    }
+    .activity-card:hover {
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+    .activity-card i {
+      font-size: 40px;
+      color: #0078d7; /* Blue icons */
+      margin-bottom: 10px;
+    }
+    .activity-card p {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 91, 181, 0.8); /* Semi-transparent darker blue for footer */
+      color: white;
+      position: relative; /* Ensure footer is above the video */
+    }
+    #activity-details-form {
+      display: none; /* Hidden by default */
+    }
+    /* Make the Join as a Helper section scrollable */
+    #join-helper {
+      max-height: 80vh; /* Set a maximum height */
+      overflow-y: auto; /* Enable vertical scrolling */
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Background -->
+  <video id="video-background" autoplay muted loop>
+    <source src="C:\Users\Joseph\Downloads\Untitled video - Made with Clipchamp (2).mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <header>
+    <h1>V-Bridge</h1>
+    <p>Connecting Youth with Elderly Care</p>
+  </header>
+  <nav>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('vision')">Vision</button>
+    <button onclick="showSection('help')">Help & Support</button>
+    <button onclick="showSection('join-helper')">Join as a Helper</button>
+    <button onclick="showSection('want-caretaker')">Want a Caretaker</button>
+  </nav>
+
+  <section id="about">
+    <h2>About V-Bridge</h2>
+    <p>
+      V-Bridge is a platform designed to link unemployed youth with elderly individuals in need of care and companionship. The core idea is to create opportunities for financial independence for young people while providing social and emotional support to the elderly. The platform operates through a mobile application that enables elderly users or their families to request services such as companionship, help with daily tasks, or physical assistance.
+    </p>
+    <p>
+      The services provided by the youth caregivers can include:
+      <ul>
+        <li>Daily Assistance: Helping the elderly with daily activities such as cooking, cleaning, and running errands.</li>
+        <li>Emotional Support: Providing companionship, engaging in conversations, and reducing the loneliness that many elderly people experience.</li>
+        <li>Healthcare Assistance: Assisting with hospital visits, medication reminders, or accompanying the elderly to appointments.</li>
+      </ul>
+    </p>
+    <p>
+      To ensure safety, all activities between the young caregivers and the elderly will be monitored through video recordings, which will be reviewed by a supervisory team. This feature aims to address any security concerns and provide peace of mind to both parties.
+    </p>
+    <p>
+      Additionally, the platform will match elderly individuals with gender-appropriate caregivers (female caregivers for elderly women, male caregivers for elderly men) based on their preferences and comfort levels.
+    </p>
+    <p>
+      By connecting young people with elderly individuals, V-Bridge fosters a symbiotic relationship where youth can find meaningful work, and the elderly receive the care and attention they deserve. This platform has the potential to reduce unemployment rates while also addressing the issue of isolation among senior citizens.
+    </p>
+  </section>
+
+  <section id="vision" style="display: none;">
+    <h2>Vision</h2>
+    <p>
+      Youth unemployment and elderly isolation are pressing social issues in India. While many young people lack employment opportunities, many elderly individuals require assistance and care. The absence of a structured way to connect the two groups leads to lost opportunities on both sides. V-Bridge proposes a solution to streamline the interaction between the youth and the elderly, benefiting both.
+    </p>
+  </section>
+
+  <section id="help" style="display: none;">
+    <h2>Help & Support</h2>
+    <p>
+      <strong>Customer Support:</strong> +91-XXXX-XXXXXX<br>
+      <strong>Technical Support:</strong> +91-XXXX-XXXXXX
+    </p>
+    <button onclick="alert('Chat feature will be available soon!')">Chat with Us</button>
+  </section>
+
+  <section id="join-helper" style="display: none;">
+    <h2>Join as a Helper</h2>
+    <form>
+      <label for="full-name">Full Name:</label>
+      <input type="text" id="full-name" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="religion">Religion:</label>
+      <input type="text" id="religion">
+
+      <label for="address">House No./Flat No.:</label>
+      <input type="text" id="address" required>
+
+      <label for="area">Area/Locality:</label>
+      <input type="text" id="area" required>
+
+      <label for="pincode">Pincode:</label>
+      <input type="number" id="pincode" required>
+
+      <label for="district">District:</label>
+      <input type="text" id="district" required>
+
+      <label for="city">City:</label>
+      <input type="text" id="city" required>
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="number" id="mobile" required>
+
+      <label for="landline">Landline:</label>
+      <input type="number" id="landline">
+
+      <label for="qualification">Qualification:</label>
+      <input type="text" id="qualification" required>
+
+      <label for="skills">Skills:</label>
+      <textarea id="skills" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="want-caretaker" style="display: none;">
+    <h2>Want a Caretaker</h2>
+    <div class="activity-grid">
+      <div class="activity-card" onclick="showActivityForm('Cooking')">
+        <i class="fas fa-utensils"></i> <!-- Cooking -->
+        <p>Cooking</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Travelling')">
+        <i class="fas fa-car"></i> <!-- Travelling -->
+        <p>Travelling</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Play Games')">
+        <i class="fas fa-gamepad"></i> <!-- Play Games -->
+        <p>Play Games</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Hospital Visit')">
+        <i class="fas fa-hospital"></i> <!-- Hospital Visit -->
+        <p>Hospital Visit</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Cleaning')">
+        <i class="fas fa-broom"></i> <!-- Cleaning -->
+        <p>Cleaning</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Driving')">
+        <i class="fas fa-car-side"></i> <!-- Driving -->
+        <p>Driving</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Laundry')">
+        <i class="fas fa-tshirt"></i> <!-- Laundry -->
+        <p>Laundry</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Physiotherapy')">
+        <i class="fas fa-hand-holding-heart"></i> <!-- Physiotherapy -->
+        <p>Physiotherapy</p>
+      </div>
+      <div class="activity-card" onclick="showActivityForm('Providing Support')">
+        <i class="fas fa-hands-helping"></i> <!-- Providing Support -->
+        <p>Providing Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activity Details Form -->
+  <section id="activity-details-form" style="display: none;">
+    <h2 id="activity-title"></h2>
+    <form>
+      <label for="person-name">Name of the Person (to be taken care of):</label>
+      <input type="text" id="person-name" required>
+
+      <label for="person-gender">Gender:</label>
+      <select id="person-gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="schedule-from">Schedule Time (From):</label>
+      <input type="time" id="schedule-from" required>
+
+      <label for="schedule-to">Schedule Time (To):</label>
+      <input type="time" id="schedule-to" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 V-Bridge. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+      });
+      // Show the selected section
+      document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function showActivityForm(activity) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+      });
+      // Set the activity title
+      document.getElementById('activity-title').textContent = activity;
+      // Show the activity details form
+      document.getElementById('activity-details-form').style.display = 'block';
+    }
+
+    // Show the About section by default
+    showSection('about');
+  </script>
+</body>
+</html>
